@@ -1,0 +1,61 @@
+[recording]
+buffer_duration = 300
+clip_duration = 300
+fps = 60
+display = "DP-1"
+follow_mouse_display = false
+window_capture = false
+encoder = "auto"
+crf = 23
+color_depth = "8"
+backend = "auto"
+capture_audio = true
+desktop_volume = 1.0
+microphone_volume = 1.0
+capture_microphone = false
+microphone_source = "default_input"
+microphone_mono = false
+wf_microphone_strategy = "prompt"
+apply_watermark = false
+audio_sink = "default"
+gsr_args = ""
+gsr_audio_source = "device:alsa_input.usb-TC-Helicon_GoXLR-00.HiFi__Line4__source"
+gsr_replay_storage = "auto"
+container = "mp4"
+audio_tracks = []
+audio_tracks_mix_first = false
+
+[hotkeys]
+clip = "KEY_F9"
+clip_presets = []
+disable_while_focused = []
+
+[output]
+directory = "/home/nils/Videos/Vice"
+image_directory = "/home/nils/Pictures/Vice"
+filename_format = "vice_%Y%m%d_%H%M%S.mp4"
+tag_clips_with_game = true
+auto_playlist_by_game = true
+clip_name_template = ""
+
+[sharing]
+enabled = true
+port = 8765
+cloudflare_tunnel = true
+embed_color = "#ffb3ad"
+share_discord_file = false
+
+[discord]
+enabled = false
+persist_while_running = true
+game_icons = true
+custom_games = []
+
+[updates]
+check_on_start = true
+
+[notifications]
+sound_volume = 1
+
+[ui]
+hardware_video_decode = false
