@@ -1,0 +1,80 @@
+set $mod Mod4
+set $term foot
+set $browser helium-browser
+set $menu wmenu-run
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+output * bg /home/nille/wallpaper.jpg fill
+
+bindsym $mod+Shift+r reload
+
+bar {
+	swaybar_command waybar
+}
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 0
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 0
+
+bindsym $mod+Shift+e exec swaynag -t warning -m "You pressed the exit shortcut. Do you really wanna exit sway?" -B 'Yes, exit sway' 'saymsg exit'
+
+bindsym $mod+c kill
+
+bindsym $mod+$left focus left
+bindsym $mod+$up focus up
+bindsym $mod+$down focus down
+bindsym $mod+$right focus right
+
+floating_modifier $mod normal
+
+bindsym $mod+q exec $term
+bindsym $mod+f exec $browser
+bindsym $mod+v floating toggle
+bindsym $mod+Shift+f fullscreen toggle
+bindsym $mod+Space exec $menu
+
+input type:touchpad {
+    natural_scroll enabled
+}
+
+seat seat0 xcursor_theme Nordzy-cursors 16
+
+# Window borders
+default_border pixel 2
+default_floating_border pixel 2
+
+# Border colors
+#             border  background text    indicator child_border
+client.focused          #89b4fa #89b4fa #1e1e2e #b4befe #ffffff
+client.focused_inactive #45475a #45475a #cdd6f4 #45475a #45475a
+client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8 #f38ba8
+client.placeholder      #181825 #181825 #cdd6f4 #181825 #181825
+
+# Window gaps (inner and outer)
+gaps inner 0
+gaps outer 0
+
+# Window titlebars
+font pango:Inter 10
