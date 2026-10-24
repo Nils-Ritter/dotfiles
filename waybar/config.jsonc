@@ -1,0 +1,89 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode"
+  ],
+
+  "modules-center": [
+    "sway/window"
+  ],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "network",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": false,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "sway/mode": {
+    "format": " {} "
+  },
+
+  "sway/window": {
+    "max-length": 50,
+    "format": "{}",
+    "rewrite": {}
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "CPU {usage}%",
+    "tooltip": false
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "RAM {percentage}%",
+    "tooltip": false
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "NET {essid}",
+    "format-ethernet": "NET wired",
+    "format-disconnected": "NET offline",
+    "tooltip-format": "{ifname}: {ipaddr}"
+  },
+
+  "pulseaudio": {
+    "format": "VOL {volume}%",
+    "format-muted": "VOL muted",
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "BAT {capacity}%",
+    "format-charging": "CHG {capacity}%",
+    "format-full": "BAT full",
+    "format-warning": "BAT {capacity}%",
+    "format-critical": "BAT {capacity}%",
+    "tooltip": false
+  },
+
+  "clock": {
+    "interval": 30,
+    "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  }
+}
