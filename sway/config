@@ -1,6 +1,6 @@
 set $mod Mod4
 set $term foot
-set $browser helium-browser
+set $browser icecat
 set $menu wmenu-run
 
 set $left h
@@ -8,12 +8,22 @@ set $down j
 set $up k
 set $right l
 
-output * bg /home/nille/wallpaper.jpg fill
+#output * bg /home/nille/wallpaper.jpg fill
+
+output DP-1 mode 1920x1080@165Hz pos 0 0
+output HDMI-A-2 mode 1920x1080@60Hz pos 0 1080 transform 180
+output HDMI-A-1 mode 1920x1080@60Hz pos -1080 0 transform 270
+output DP-2 mode 1280x1024@75Hz pos -2360 700
+
+workspace 1 output DP-1
+workspace 10 output HDMI-A-2
+workspace 11 output HDMI-A-1
+workspace 12 output DP-2
 
 bindsym $mod+Shift+r reload
 
 bar {
-	swaybar_command waybar
+	status_command i3status
 }
 
 bindsym $mod+1 workspace number 1
@@ -49,6 +59,9 @@ bindsym $mod+$right focus right
 
 floating_modifier $mod normal
 
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
 bindsym $mod+q exec $term
 bindsym $mod+f exec $browser
 bindsym $mod+v floating toggle
@@ -59,22 +72,20 @@ input type:touchpad {
     natural_scroll enabled
 }
 
+input * {
+    accel_profile flat
+    pointer_accel 0
+}
+
 seat seat0 xcursor_theme Nordzy-cursors 16
 
-# Window borders
-default_border pixel 2
-default_floating_border pixel 2
-
-# Border colors
-#             border  background text    indicator child_border
-client.focused          #89b4fa #89b4fa #1e1e2e #b4befe #ffffff
-client.focused_inactive #45475a #45475a #cdd6f4 #45475a #45475a
-client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8 #f38ba8
-client.placeholder      #181825 #181825 #cdd6f4 #181825 #181825
-
-# Window gaps (inner and outer)
-gaps inner 0
-gaps outer 0
+hide_edge_borders both
 
 # Window titlebars
-font pango:Inter 10
+font pango:Iosevka 10
+
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user start sway-session.target
+exec systemctl --user restart xdg-desktop-portal-wlr
+exec systemctl --user restart xdg-desktop-portal
