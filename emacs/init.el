@@ -41,6 +41,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-redo)
+  (setq evil-insert-state-cursor 'box)
   :config
   (evil-mode 1))
 
@@ -71,7 +72,9 @@
   (my/leader
     ;; File / buffer
     "f f" '(find-file :wk "find file")
+    "f j" '(dired-jump :wk "open dired")
     "f r" '(recentf-open-files :wk "recent files")
+    "f p" '(project-find-file :wk "recent files")
     "b b" '(switch-to-buffer :wk "switch buffer")
     "b k" '(kill-current-buffer :wk "kill buffer")
     ;; Git
@@ -91,7 +94,15 @@
     "l s" '(eglot-shutdown-all :wk "shutdown all LSP servers")
     "l e" '(flycheck-list-errors :wk "list errors")
     ;; Diagnostics toggle
-    "t d" '(my/toggle-flycheck :wk "toggle diagnostics")))
+    "t d" '(my/toggle-flycheck :wk "toggle diagnostics")
+    ;; window movement
+    "w h" '(evil-window-left :wk "goto left win")
+    "w j" '(evil-window-down :wk "goto down win")
+    "w k" '(evil-window-up :wk "goto up win")
+    "w l" '(evil-window-right :wk "goto right win")
+    ;; window splitting
+    "w v" '(split-window-horizontally :wk "horizontal winsplit")
+    "w V" '(split-window-vertically :wk "vertical winsplit")))
 
 ;;; Autocomplete (Company - Manual Trigger Only)
 (use-package company
